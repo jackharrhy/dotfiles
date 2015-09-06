@@ -1,0 +1,61 @@
+URxvt.perl-ext-common: ...,clipboard
+URxvt.keysym.M-c:   perl:clipboard:copy
+URxvt.keysym.M-v:   perl:clipboard:paste
+URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
+
+URxvt.scrollBar: false
+
+URxvt.font:     xft:bitstream vera sans mono:size=10:antialias=true
+URxvt.boldFont: xft:bitstream vera sans mono:bold:size=10:antialias=true
+
+*background: #000000
+*foreground: #eff2f3
+
+! black
+*color0: #282828
+
+! bright_black
+*color8: #5e5e5e
+
+! red
+*color1: #b32e52
+
+! bright_red
+*color9: #e28fa5
+
+! green
+*color2: #52b32e
+
+! bright_green
+*color10: #a5e28f
+
+! yellow
+*color3: #b3902e
+
+! bright_yellow
+*color11: #e2cc8f
+
+! blue
+*color4: #2e52b3
+
+! bright_blue
+*color12: #8fa5e2
+
+! magenta
+*color5: #902eb3
+
+! bright_magenta
+*color13: #cc8fe2
+
+! cyan
+*color6: #2eb390
+
+! bright_cyan
+*color14: #8fe2cc
+
+! white
+*color7: #bfbfbf
+
+! bright_white
+*color15: #ffffff
+
