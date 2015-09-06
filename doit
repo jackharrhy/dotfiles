@@ -11,6 +11,16 @@ function line() {
 	tput sgr0
 }
 
+function updateDotfiles() {
+	echo 'Copying files...'
+	cp ~/.vimrc .
+	cp ~/.bashrc .
+	cp ~/.config/herbstluftwm/autostart .config/herbstluftwm/autostart
+	cp ~/doit .
+	cp ~/cloud .
+	echo 'Done!'
+}
+
 function startNetwork() {
 	echo 'Starting Network...'
 	sudo netctl start harrhy
@@ -116,6 +126,9 @@ if [ $1 ]; then
 
 	elif [ $1 = 'hurt-eyes' ]; then
 		killRedshift
+
+	elif [ $1 = 'update-dotfiles' ]; then
+		updateDotfiles
 
 	else
 		# User is drunk, inform of this
