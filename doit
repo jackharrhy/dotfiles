@@ -105,7 +105,14 @@ function informOfChoices() {
 	restart-display
 
 	heal-eyes
+		Enable redshift
 	hurt-eyes
+		Disable redshift
+
+	update-dotfiles
+		Update dotfiles found within system to local directory
+	replace-dotfiles
+		Replace dotfiles found within system from local directory
 '
 }
 
@@ -145,7 +152,7 @@ if [ $1 ]; then
 
 	else
 		# User is drunk, inform of this
-		echo 'Unknown Command :(\n'
+		echo 'Unknown Command :('
 		informOfChoices
 	fi
 
