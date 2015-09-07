@@ -11,38 +11,18 @@ function line() {
 	tput sgr0
 }
 
-function updateDotfiles() {
-	echo 'Copying files...'
-	cp ~/.vimrc .
-	cp ~/.bashrc .
-	cp ~/.config/herbstluftwm/autostart .config/herbstluftwm/autostart
-	cp ~/doit .
-	cp ~/cloud .
-	echo 'Done!'
-}
-
-function replaceDotfiles() {
-	echo 'Copying files...'
-	cp ./.vimrc ~/.vimrc
-	cp ./.bashrc ~/.bashrc
-	cp ./.config/herbstluftwm/autostart ~/.config/herbstluftwm/autostart
-	cp ./doit ~/doit
-	cp ./cloud ~/cloud
-	echo 'Done!'
-}
-
-function startNetwork() {
-	echo 'Starting Network...'
-	sudo netctl start harrhy
-	echo 'Finished Network!'
-}
-
+# Network
 function restartNetwork() {
 	echo 'Shutting Down Network...'
 	sudo netctl stop harrhy
 	echo 'Network Shutdown, Starting Network...'
 	sudo netctl start harrhy
 	echo 'Network Shutdown'
+}
+function startNetwork() {
+	echo 'Starting Network...'
+	sudo netctl start harrhy
+	echo 'Finished Network!'
 }
 
 function pingAddress() {
@@ -66,7 +46,11 @@ function checkNetwork() {
 	pingAddress "google.com:" google.com 6 "last"
 }
 
+# Restart Display
 function restartDisplay() {
+	line $248
+	line $246
+	line $244
 	echo 'Starting Display...'
 	# Set VGA output as primary source; disabling built in monitor
 	xrandr --output VGA1 --primary
@@ -76,8 +60,12 @@ function restartDisplay() {
 	# Make sure our DPI is in check, and hasn't been ruined by a rouge program
 	xrandr --dpi 90
 	echo 'Finished Display!'
+	line $244
+	line $246
+	line $248
 }
 
+# Redshift
 function initRedshift() {
 	# Redshift goes BESERK if you open up a few process at the same time; lets avoid this :)
 	killRedshift
@@ -86,12 +74,31 @@ function initRedshift() {
 	redshift -l 47.565520:-52.765419 > /dev/null &
 	echo 'Initiated!'
 }
-
 function killRedshift() {
 	echo 'Killing redshift process...'
 	# Use pkill to find and kill all the redshift process (mwhahaha)
 	pkill redshift
 	echo 'Killed!'
+}
+
+# Dotfiles
+function updateDotfiles() {
+	echo 'Copying files...'
+	cp ~/.vimrc .
+	cp ~/.bashrc .
+	cp ~/.config/herbstluftwm/autostart .config/herbstluftwm/autostart
+	cp ~/doit .
+	cp ~/cloud .
+	echo 'Done!'
+}
+function replaceDotfiles() {
+	echo 'Copying files...'
+	cp ./.vimrc ~/.vimrc
+	cp ./.bashrc ~/.bashrc
+	cp ./.config/herbstluftwm/autostart ~/.config/herbstluftwm/autostart
+	cp ./doit ~/doit
+	cp ./cloud ~/cloud
+	echo 'Done!'
 }
 
 function informOfChoices() {
@@ -120,41 +127,51 @@ function informOfChoices() {
 line 150
 if [ $1 ]; then
 	# If an argument is past, find method to act upon it
-	if [ $1 = 'restart-network' ]; then
-		restartNetwork
+	case $1 in
+		restart-network)
+			restartNetwork
+			;;
 
-	elif [ $1 = 'check-network' ]; then
-		checkNetwork
+		check-network)
+			checkNetwork
+			;;
 
-	elif [ $1 = 'basic-startup' ]; then
-		startNetwork
-		restartDisplay
+		basic-startup)
+			startNetwork
+			restartDisplay
+			;;
 
-	elif [ $1 = 'full-startup' ]; then
-		startNetwork
-		restartDisplay
-		initRedshift
+		full-startup)
+			startNetwork
+			restartDisplay
+			initRedshift
+			;;
 
-	elif [ $1 = 'restart-display' ]; then
-		restartDisplay
+		restart-display)
+			restartDisplay
+			;;
 
-	elif [ $1 = 'heal-eyes' ]; then
-		initRedshift
+		heal-eyes)
+			initRedshift
+			;;
 
-	elif [ $1 = 'hurt-eyes' ]; then
-		killRedshift
+		hurt-eyes)
+			killRedshift
+			;;
 
-	elif [ $1 = 'update-dotfiles' ]; then
-		updateDotfiles
+		update-dotfiles)
+			updateDotfiles
+			;;
 	
-	elif [ $1 = 'replace-dotfiles' ]; then
-		replaceDotfiles
+		replace-dotfiles)
+			replaceDotfiles
+			;;
 
-	else
-		# User is drunk, inform of this
-		echo 'Unknown Command :('
-		informOfChoices
-	fi
+		*)
+			# User is drunk, inform of this
+			echo 'Unknown Command :('
+			informOfChoices
+	esac
 
 # User didn't place an argument; silly user ¯\_(ツ)_/¯
 else
