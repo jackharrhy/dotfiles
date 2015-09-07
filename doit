@@ -21,6 +21,16 @@ function updateDotfiles() {
 	echo 'Done!'
 }
 
+function replaceDotfiles() {
+	echo 'Copying files...'
+	cp ./.vimrc ~/.vimrc
+	cp ./.bashrc ~/.bashrc
+	cp ./.config/herbstluftwm/autostart ~/.config/herbstluftwm/autostart
+	cp ./doit ~/doit
+	cp ./cloud ~/cloud
+	echo 'Done!'
+}
+
 function startNetwork() {
 	echo 'Starting Network...'
 	sudo netctl start harrhy
@@ -129,6 +139,9 @@ if [ $1 ]; then
 
 	elif [ $1 = 'update-dotfiles' ]; then
 		updateDotfiles
+	
+	elif [ $1 = 'replace-dotfiles' ]; then
+		replaceDotfiles
 
 	else
 		# User is drunk, inform of this
