@@ -22,6 +22,9 @@ if [[ $NAME == *"ARCH"* ]]; then
 	# Window Manager
 	alias autostart='vim ~/.config/herbstluftwm/autostart'
 	alias rs='redshift -l 47.565520:-52.765419'
+
+	# Video Player
+	alias v='mpv'
 else
 	# set variable identifying the chroot you work in (used in the prompt below)
 	if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
