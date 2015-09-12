@@ -6,6 +6,9 @@
 NAME=$(uname -r)
 
 if [[ $NAME == *"ARCH"* ]]; then
+	# Trash
+	alias rm='trash'
+
 	# Pacman
 	alias p='sudo pacman'
 	alias i='sudo pacman -S'
@@ -89,9 +92,6 @@ export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/lib
 
 # Cmatrix Binds
 alias matrix='cmatrix -C red -b -l -u 10'
-
-# Trash
-alias rm='trash'
 
 # tmux
 alias tmux='TERM=xterm-256color tmux -2'
