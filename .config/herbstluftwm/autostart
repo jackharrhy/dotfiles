@@ -8,11 +8,12 @@ hc() {
 
 hc emit_hook reload
 
-a='#303030'
-b='#191919'
-c='#d5d4d4'
+a='#80C2AF'
+b='#5C946E'
+c='#60C2AF'
+d='#30C5FF'
 
-xsetroot -solid black
+xsetroot -solid '#30C5FF'
 
 hc keyunbind --all
 

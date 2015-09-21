@@ -46,6 +46,13 @@ function checkNetwork() {
 	pingAddress "google.com:" google.com 6 "last"
 }
 
+# Time
+function syncTime() {
+	echo 'Synching Time with Cloud Server...'
+	date --set="$(~/cloud shutup date)"
+	echo 'Synched!'
+}
+
 # Restart Display
 function restartDisplay() {
 	line $248
@@ -109,6 +116,8 @@ function informOfChoices() {
 	restart-network
 	check-network
 
+	sync-time
+
 	restart-display
 
 	heal-eyes
@@ -128,14 +137,6 @@ line 150
 if [ $1 ]; then
 	# If an argument is past, find method to act upon it
 	case $1 in
-		restart-network)
-			restartNetwork
-			;;
-
-		check-network)
-			checkNetwork
-			;;
-
 		basic-startup)
 			startNetwork
 			restartDisplay
@@ -145,6 +146,18 @@ if [ $1 ]; then
 			startNetwork
 			restartDisplay
 			initRedshift
+			;;
+
+		restart-network)
+			restartNetwork
+			;;
+
+		check-network)
+			checkNetwork
+			;;
+
+		sync-time)
+			syncTime
 			;;
 
 		restart-display)
