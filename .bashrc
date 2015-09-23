@@ -4,8 +4,9 @@
 [[ $- != *i* ]] && return
 
 NAME=$(uname -r)
-
 if [[ $NAME == *"ARCH"* ]]; then
+	# If OS is Archlinux then do the following...
+	export PS1="\[\033[38;5;229m\]\T\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput bold)\]-\[$(tput sgr0)\] \[$(tput sgr0)\]\[\033[38;5;180m\]\d\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput bold)\]\[$(tput sgr0)\]\[\033[38;5;75m\][\[$(tput sgr0)\]\[$(tput sgr0)\]\[\033[38;5;15m\]\w\[$(tput bold)\]\[$(tput sgr0)\]\[\033[38;5;75m\]]\[$(tput sgr0)\]\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]\[\033[38;5;248m\]\$?\[$(tput sgr0)\]\[\033[38;5;15m\]\n\[$(tput sgr0)\]\[\033[38;5;48m\]\u\[$(tput bold)\]\[$(tput sgr0)\]\[\033[38;5;216m\]@\[$(tput sgr0)\]\[$(tput sgr0)\]\[\033[38;5;152m\]\h\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput bold)\]\[$(tput sgr0)\]\[\033[38;5;155m\]>\[$(tput sgr0)\]\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]"
 	# Pacman
 	alias p='sudo pacman'
 	alias i='sudo pacman -S'
@@ -16,6 +17,9 @@ if [[ $NAME == *"ARCH"* ]]; then
 	# Yaourt
 	alias yi='yaourt -S'
 
+	# Trash
+	alias rm='trash'
+
 	# Window Manager
 	alias autostart='vim ~/.config/herbstluftwm/autostart'
 	alias rs='redshift -l 47.565520:-52.765419'
@@ -23,10 +27,15 @@ if [[ $NAME == *"ARCH"* ]]; then
 	# Video Player
 	alias v='mpv'
 else
+	# If OS is Debian then do the following...
+
 	# set variable identifying the chroot you work in (used in the prompt below)
 	if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
 		debian_chroot=$(cat /etc/debian_chroot)
 	fi
+
+	# Prompt
+	export PS1="> "
 
 	# Apt-get
 	alias i='sudo apt-get install'
@@ -58,7 +67,6 @@ HISTFILESIZE=2000
 # check the window size after each command
 shopt -s checkwinsize
 
-
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
 	test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
@@ -70,10 +78,6 @@ if [ -x /usr/bin/dircolors ]; then
 	alias fgrep='fgrep --color=auto'
 	alias egrep='egrep --color=auto'
 fi
-
-
-# Prompt
-export PS1="\[\033[38;5;229m\]\T\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput bold)\]-\[$(tput sgr0)\] \[$(tput sgr0)\]\[\033[38;5;180m\]\d\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput bold)\]\[$(tput sgr0)\]\[\033[38;5;75m\][\[$(tput sgr0)\]\[$(tput sgr0)\]\[\033[38;5;15m\]\w\[$(tput bold)\]\[$(tput sgr0)\]\[\033[38;5;75m\]]\[$(tput sgr0)\]\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]\[\033[38;5;248m\]\$?\[$(tput sgr0)\]\[\033[38;5;15m\]\n\[$(tput sgr0)\]\[\033[38;5;48m\]\u\[$(tput bold)\]\[$(tput sgr0)\]\[\033[38;5;216m\]@\[$(tput sgr0)\]\[$(tput sgr0)\]\[\033[38;5;152m\]\h\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput bold)\]\[$(tput sgr0)\]\[\033[38;5;155m\]>\[$(tput sgr0)\]\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]"
 
 # LS
 alias l='ls -l'
@@ -92,9 +96,6 @@ export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/lib
 
 # Cmatrix Binds
 alias matrix='cmatrix -C red -b -l -u 10'
-
-# Trash
-alias rm='trash'
 
 # tmux
 alias tmux='TERM=xterm-256color tmux -2'

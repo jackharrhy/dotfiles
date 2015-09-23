@@ -38,4 +38,4 @@ set number
 
 " Syntax
 syntax on
-colorscheme mrkn256-jacksmod
+colorscheme mrkn256
