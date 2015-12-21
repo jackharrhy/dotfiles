@@ -1,8 +1,0 @@
-#!/bin/bash
-if [ -n $1 ]; then
-	echo 'SSH-ing to root@104.131.251.106 via port 443...'
-	ssh -p 443 root@104.131.251.106
-	echo 'Session finished!'
-else
-	ssh -p 443 root@104.131.251.106 $1
-fi

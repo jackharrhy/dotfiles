@@ -1,0 +1,22 @@
+export PS1="\[\033[38;5;229m\]\T\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput bold)\]-\[$(tput sgr0)\] \[$(tput sgr0)\]\[\033[38;5;180m\]\d\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput bold)\]\[$(tput sgr0)\]\[\033[38;5;75m\][\[$(tput sgr0)\]\[$(tput sgr0)\]\[\033[38;5;15m\]\w\[$(tput bold)\]\[$(tput sgr0)\]\[\033[38;5;75m\]]\[$(tput sgr0)\]\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]\[\033[38;5;248m\]\$?\[$(tput sgr0)\]\[\033[38;5;15m\]\n\[$(tput sgr0)\]\[\033[38;5;48m\]\u\[$(tput bold)\]\[$(tput sgr0)\]\[\033[38;5;216m\]@\[$(tput sgr0)\]\[$(tput sgr0)\]\[\033[38;5;152m\]\h\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput bold)\]\[$(tput sgr0)\]\[\033[38;5;155m\]>\[$(tput sgr0)\]\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]"
+
+# package management
+alias p='sudo pacman'
+alias i='sudo pacman -S'
+alias u='sudo pacman -Su'
+alias ud='sudo pacman -Syu'
+alias r='sudo pacman -Rdds'
+
+alias yi='yaourt -S'
+
+# special trash 
+alias rm='trash'
+
+# save eyes
+alias rs='redshift -l 47.565520:-52.765419'
+
+# suspension
+alias night='systemctl suspend'
+
+# END OF ARCH SPECIFIC #
+

@@ -33,7 +33,6 @@ setlocal shiftwidth=2
 setlocal tabstop=2
 
 " Line Numbering
-set relativenumber
 set number
 
 " Syntax

@@ -1,0 +1,14 @@
+if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
+	debian_chroot=$(cat /etc/debian_chroot)
+fi
+
+export PS1="> "
+
+alias i='sudo apt-get install'
+alias r='sudo apt-get remove'
+alias u='sudo apt-get update'
+alias ug='sudo apt-get upgrade'
+alias ugd='sudo apt-get dist-upgrade'
+
+# END OF UBUNTU SPECIFIC #
+

@@ -1,0 +1,25 @@
+#!/bin/bash
+
+if [ $1 ]; then
+	case $1 in
+		replace-arch)
+			cat ./bashrc-arch ./bashrc-universal > ~/.bashrc
+			cat vimrc > ~/.vimrc
+			cat autostart > ~/.config/herbstluftwm/autostart
+			;;
+
+		replace-ubuntu)
+			cat ./bashrc-ubuntu ./bashrc-universal > ~/.bashrc
+			cat vimrc > ~/.vimrc
+			cat autostart > ~/.config/herbstluftwm/autostart
+			;;
+
+		*)
+			echo '  replace-arch'
+			echo '  replace-ubuntu'
+	esac
+
+else
+	echo '  replace-arch'
+	echo '  replace-ubuntu'
+fi
