@@ -1,3 +1,19 @@
+URxvt*termName:  screen-256color
+
+URxvt*scrollTtyOutput:  false
+URxvt*scrollWithBuffer: false
+
+URxvt.perl-ext-common: ...,clipboard
+URxvt.keysym.M-c:   perl:clipboard:copy
+URxvt.keysym.M-v:   perl:clipboard:paste
+URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
+
+URxvt.scrollBar: false
+URxvt*fading:  30
+
+URxvt.font:     xft:bitstream vera sans mono:size=10:antialias=true
+URxvt.boldFont: xft:bitstream vera sans mono:bold:size=10:antialias=true
+
 *background: #04080d
 *foreground: #f0f2e4
 
@@ -48,13 +64,3 @@
 
 ! bright_white
 *color15: #ffffff
-
-URxvt.perl-ext-common: ...,clipboard
-URxvt.keysym.M-c:   perl:clipboard:copy
-URxvt.keysym.M-v:   perl:clipboard:paste
-URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
-
-URxvt.scrollBar: false
-
-URxvt.font:     xft:bitstream vera sans mono:size=10:antialias=true
-URxvt.boldFont: xft:bitstream vera sans mono:bold:size=10:antialias=true
