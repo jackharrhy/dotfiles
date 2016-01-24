@@ -21,25 +21,36 @@ function ubuntu() {
 	cat ./bashrc-ubuntu ./bashrc-universal > ~/.bashrc
 }
 
-function universal() {
-	cat vimrc > ~/.vimrc
+function gui() {
 	cat autostart > ~/.config/herbstluftwm/autostart
 	cat xdefaults > ~/.Xdefaults
+}
+
+function universal() {
+	cat vimrc > ~/.vimrc
 }
 
 function inform() {
 	echo '  replace-arch'
 	echo '  replace-ubuntu'
+	echo '  replace-ubuntu-nogui'
 }
 
 if [ $1 ]; then
 	case $1 in
 		replace-arch)
 			arch
+			gui
 			universal
 			;;
 
 		replace-ubuntu)
+			ubuntu
+			gui
+			universal
+			;;
+
+		replace-ubuntu-nogui)
 			ubuntu
 			universal
 			;;
