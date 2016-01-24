@@ -1,4 +1,4 @@
-# If not running interactively, don't do anything
+# if not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
 # enable programmable completion features
@@ -37,7 +37,6 @@ if [ -x /usr/bin/dircolors ]; then
 	alias egrep='egrep --color=auto'
 fi
 
-
 # config Files
 alias vimrc='vim ~/.vimrc'
 alias bashrc='vim ~/.bashrc'
@@ -53,3 +52,6 @@ alias tmux='TERM=xterm-256color tmux -2'
 
 # editor
 EDITOR=vim
+
+# web server
+alias web='python -m SimpleHTTPServer'
