@@ -6,6 +6,7 @@
 #  bashrc-universal
 #
 #  vimrc
+#  tmux.conf
 #
 #  autostart
 #  xdefaults
@@ -28,6 +29,7 @@ function gui() {
 
 function universal() {
 	cat vimrc > ~/.vimrc
+	cat tmux.conf > ~/.tmux.conf
 }
 
 function inform() {
