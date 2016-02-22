@@ -1,60 +1,38 @@
 #!/bin/bash
-#
-# ACCOUNTS FOR
-#  bashrc-arch
-#  bashrc-ubuntu
-#  bashrc-universal
-#
-#  vimrc
-#  tmux.conf
-#
-#  autostart
-#  xdefaults
-#
-#  doit
 
 function arch() {
-	cat ./bashrc-arch ./bashrc-universal > ~/.bashrc
-	cat ./doit > ~/doit
+	cat ./zsh/zshrc-arch ./zsh/zshrc > ~/.zshrc
 }
 
 function ubuntu() {
-	cat ./bashrc-ubuntu ./bashrc-universal > ~/.bashrc
+	cat ./zsh/zshrc-ubuntu ./zsh/zshrc > ~/.zshrc
 }
 
 function gui() {
-	cat autostart > ~/.config/herbstluftwm/autostart
-	cat xdefaults > ~/.Xdefaults
+	cp ./gui/xdefaults ~/.xdefaults
+	cp ./gui/i3config ~/.config/i3/config
 }
 
 function universal() {
-	cat vimrc > ~/.vimrc
-	cat tmux.conf > ~/.tmux.conf
+	cp ./term/tmux ~/.tmux.conf
+	cp ./term/vimrc ~/.vimrc
 }
 
 function inform() {
-	echo '  replace-arch'
-	echo '  replace-ubuntu'
-	echo '  replace-ubuntu-nogui'
+	echo "  arch"
+	echo ""
+	echo "  ubuntu"
+	echo "  ubuntu-nogui"
 }
 
 if [ $1 ]; then
 	case $1 in
-		replace-arch)
-			arch
-			gui
-			universal
+		arch)
 			;;
+		ubuntu)
 
-		replace-ubuntu)
-			ubuntu
-			gui
-			universal
 			;;
-
-		replace-ubuntu-nogui)
-			ubuntu
-			universal
+		ubuntu-nogui)
 			;;
 
 		*)
