@@ -1,6 +1,7 @@
 #!/bin/bash
 
 function arch() {
+	cp ./doit ~/doit
 	cat ./zsh/zshrc-arch ./zsh/zshrc > ~/.zshrc
 }
 
@@ -9,7 +10,7 @@ function ubuntu() {
 }
 
 function gui() {
-	cp ./gui/xdefaults ~/.xdefaults
+	cp ./gui/xdefaults ~/.Xdefaults
 	cp ./gui/i3config ~/.config/i3/config
 }
 
@@ -28,11 +29,18 @@ function inform() {
 if [ $1 ]; then
 	case $1 in
 		arch)
+			arch
+			gui
+			universal
 			;;
 		ubuntu)
-
+			ubuntu
+			gui
+			universal
 			;;
 		ubuntu-nogui)
+			ubuntu
+			universal
 			;;
 
 		*)

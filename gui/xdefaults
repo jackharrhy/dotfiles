@@ -9,8 +9,10 @@ URxvt*fading:  30
 URxvt.font:     xft:bitstream vera sans mono:size=10:antialias=true
 URxvt.boldFont: xft:bitstream vera sans mono:bold:size=10:antialias=true
 
-URxvt.depth: 32
-URxvt.background: rgba:1111/1111/1111/dddd
+URxvt.depth:       32
+URxvt.background:  rgba:1111/1111/1111/dddd
+URxvt.transparent: true
+URxvt.shading:     20
 
 *background: #04080d
 *foreground: #f0f2e4
