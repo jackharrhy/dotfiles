@@ -4,11 +4,16 @@ filetype off
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-	Plugin 'gmarik/Vundle.vim'
+	Plugin 'gmarik/Vundle.vim' 
 
 	Plugin 'flazz/vim-colorschemes'
 
-	Plugin 'tpope/vim-markdown'
+	Plugin 'scrooloose/nerdtree'
+
+	Plugin 'Valloric/YouCompleteMe'
+
+	Plugin 'godlygeek/tabular'
+	Plugin 'plasticboy/vim-markdown'
 
 	Plugin 'ervandew/supertab'
 	Plugin 'honza/vim-snippets'
@@ -38,3 +43,19 @@ set number
 " Syntax
 syntax on
 colorscheme mrkn256
+
+" Visual bell
+:set visualbell
+
+" \vs Splits panes, with scrollock
+:noremap <silent> <Leader>vs :<C-u>let @z=&so<CR>:set so=0 noscb<CR>:bo vs<CR>Ljzt:setl scb<CR><C-w>p:setl scb<CR>:let &so=@z<CR>
+
+" Use ctrl-[hjkl] to select the active split
+nmap <silent> <c-k> :wincmd k<CR>
+nmap <silent> <c-j> :wincmd j<CR>
+nmap <silent> <c-h> :wincmd h<CR>
+nmap <silent> <c-l> :wincmd l<CR>
+
+" Better wrapping on :set nowrap
+:set textwidth=0
+:set wrapmargin=0

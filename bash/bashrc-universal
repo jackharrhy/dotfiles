@@ -48,7 +48,7 @@ alias autostart='vim ~/.config/herbstluftwm'
 alias matrix='cmatrix -C red -b -l -u 10'
 
 # tmux
-alias tmux='TERM=xterm-256color tmux -2'
+alias tmux='TERM=screen-256color tmux'
 
 # editor
 EDITOR=vim

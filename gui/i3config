@@ -8,7 +8,7 @@ font pango:monospace 8
 floating_modifier $mod
 
 # terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec rxvt-unicode
 
 # kill
 bindsym $mod+Shift+q kill
@@ -92,10 +92,8 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Do you really want to exit?' -b 'Yes, exit i3' 'i3-msg exit'"
 
-# i3-gaps fix, disables window bar
+# disables window bar
 for_window [class="^.*"] border pixel 0
-
-smart_gaps on
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
