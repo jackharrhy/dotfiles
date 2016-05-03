@@ -2,16 +2,28 @@
 
 function arch() {
 	cp ./doit ~/doit
-	cat ./zsh/zshrc-arch ./zsh/zshrc > ~/.zshrc
+	cat ./zsh/zshrc-arch ./zsh/zshrc-base > ~/.zshrc
 }
 
 function ubuntu() {
-	cat ./zsh/zshrc-ubuntu ./zsh/zshrc > ~/.zshrc
+	cat ./zsh/zshrc-ubuntu ./zsh/zshrc-base > ~/.zshrc
 }
 
 function gui() {
-	cp ./gui/xdefaults ~/.Xdefaults
-	cp ./gui/i3config ~/.config/i3/config
+	sourceCodeProFiles=$(fc-list | grep -i "Source Code Pro")
+	if [ -z sourceCodeProFiles ]; then
+		echo "The font \"Source Code Pro\" is not currently installed"
+		cat ./gui/xdefaults-base ./gui/xdefaults-defaultfont > ~/.Xdefaults
+	else
+		cat ./gui/xdefaults-base ./gui/xdefaults-sourcecodepro > ~/.Xdefaults
+	fi
+}
+
+function i3multimon() {
+	cat ./gui/i3config-base ./gui/i3config-multimon > ~/.config/i3/config
+}
+function i3() {
+	cp ./gui/i3config-base ~/.config/i3/config
 }
 
 function universal() {
@@ -20,25 +32,37 @@ function universal() {
 }
 
 function inform() {
-	echo "  arch"
 	echo ""
-	echo "  ubuntu"
-	echo "  ubuntu-nogui"
+	echo " Choices:"
+	echo "  1 - arch"
+	echo "  2 - arch-multimon"
+	echo ""
+	echo "  3 - ubuntu"
+	echo "  4 - ubuntu-nogui"
+	echo ""
 }
 
 if [ $1 ]; then
 	case $1 in
-		arch)
+		1)
 			arch
 			gui
+			i3
 			universal
 			;;
-		ubuntu)
+		2)
+			arch
+			gui
+			i3multimon
+			universal
+			;;
+
+		3)
 			ubuntu
 			gui
 			universal
 			;;
-		ubuntu-nogui)
+		4)
 			ubuntu
 			universal
 			;;

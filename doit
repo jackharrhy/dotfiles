@@ -24,10 +24,7 @@ function startAudio() {
 
 function restartDisplay() {
 	echo 'Restarting Display'
-	xrandr --output VGA1 --primary
-	xrandr -s 640x480
-	xrandr -s 1920x1080
-	xrandr --dpi 90
+	xrandr --output HDMI1 --off --output LVDS1 --mode 720x405 --pos 0x675 --rotate normal --output VIRTUAL1 --off --output DP1 --off --output VGA1 --primary --mode 1920x1080 --pos 720x0 --rotate normal
 }
 
 function initRedshift() {

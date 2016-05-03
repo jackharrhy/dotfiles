@@ -8,7 +8,7 @@ font pango:monospace 8
 floating_modifier $mod
 
 # terminal
-bindsym $mod+Return exec rxvt-unicode
+bindsym $mod+Return exec urxvt
 
 # kill
 bindsym $mod+Shift+q kill
