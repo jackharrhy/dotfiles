@@ -6,6 +6,9 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 	Plugin 'gmarik/Vundle.vim' 
 
+	" NERDTree
+	Plugin 'scrooloose/nerdtree'
+
 	" Syntax
 	Plugin 'flazz/vim-colorschemes'
 
@@ -44,7 +47,7 @@ set number
 
 " Syntax
 syntax on
-colorscheme desert
+colorscheme devbox-dark-256
 
 " Visual bell
 :set visualbell
