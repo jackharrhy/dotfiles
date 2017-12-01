@@ -9,19 +9,14 @@ call vundle#begin()
 	" NERDTree
 	Plugin 'scrooloose/nerdtree'
 
-	" Syntax
+	" Color Schemes
 	Plugin 'flazz/vim-colorschemes'
-
-	" Git
-	Plugin 'tpope/vim-fugitive'
 
 	" Autocompletion
 	Plugin 'ajh17/VimCompletesMe'
 
-	" Reformatting
-	Plugin 'godlygeek/tabular'
-
 	" Markdown
+        Plugin 'godlygeek/tabular'
 	Plugin 'tpope/vim-markdown'
 
 	" HTML
@@ -32,15 +27,19 @@ call vundle#begin()
 	Plugin 'ap/vim-css-color'
 
 	" Javascript/JSON
-	Plugin 'Shutnik/jshint2.vim'
 	Plugin 'elzr/vim-json'
 	Plugin 'pangloss/vim-javascript'
+	Plugin 'mxw/vim-jsx'
 call vundle#end()
 filetype plugin indent on
 
+" JSX on .js
+let g:jsx_ext_required = 0
+
 " Indenting
-setlocal shiftwidth=2
-setlocal tabstop=2
+set softtabstop=2
+set shiftwidth=2
+set expandtab
 
 " Line Numbering
 set number
@@ -51,9 +50,6 @@ colorscheme devbox-dark-256
 
 " Visual bell
 :set visualbell
-
-" \vs Splits panes, with scrollock
-:noremap <silent> <Leader>vs :<C-u>let @z=&so<CR>:set so=0 noscb<CR>:bo vs<CR>Ljzt:setl scb<CR><C-w>p:setl scb<CR>:let &so=@z<CR>
 
 " Use ctrl-[hjkl] to select the active split
 nmap <silent> <c-k> :wincmd k<CR>
@@ -67,3 +63,6 @@ nmap <silent> <c-l> :wincmd l<CR>
 
 " Python3 syntax checker
 let g:syntastic_python_python_exec = '/usr/bin/python3'
+
+" Automatic NERDTree Startup
+autocmd vimenter * NERDTree
