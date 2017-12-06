@@ -5,6 +5,10 @@ function arch() {
 	cat ./zsh/zshrc-arch ./zsh/zshrc-base > ~/.zshrc
 }
 
+function popos() {
+	cat ./zsh/zshrc-popos ./zsh/zshrc-base > ~/.zshrc
+}
+
 function ubuntu() {
 	cat ./zsh/zshrc-ubuntu ./zsh/zshrc-base > ~/.zshrc
 }
@@ -40,6 +44,8 @@ function inform() {
 	echo "  3 - ubuntu"
 	echo "  4 - ubuntu-nogui"
 	echo ""
+	echo "  5 - pop-os"
+	echo ""
 }
 
 if [ $1 ]; then
@@ -65,6 +71,12 @@ if [ $1 ]; then
 			;;
 		4)
 			ubuntu
+			universal
+			;;
+
+		5)
+			popos
+                        gui
 			universal
 			;;
 
