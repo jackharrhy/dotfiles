@@ -20,4 +20,4 @@ alias egrep='egrep --color=auto'
 
 EDITOR=vim
 
-alias web='python -m SimpleHTTPServer'
+alias web='serve'
