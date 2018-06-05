@@ -1,0 +1,87 @@
+wtf:
+  colors:
+    border:
+      focusable: darkslateblue
+      focused: orange
+      normal: gray
+  grid:
+    columns: [40, 40]
+    rows: [7, 10]
+  refreshInterval: 1
+  mods:
+    clocks:
+      colors:
+        rows:
+          even: "lightblue"
+          odd: "white"
+      enabled: true
+      locations:
+        StJohns: "America/St_Johns"
+        London: "Europe/London"
+        Manila: "Asia/Manila"
+      position:
+        top: 0
+        left: 0
+        height: 1 
+        width: 1
+      refreshInterval: 15
+      sort: "alphabetical"
+    security:
+      enabled: false
+      position:
+        top: 1
+        left: 0
+        height: 1
+        width: 1
+      refreshInterval: 3600
+    status:
+      enabled: false
+      position:
+        top: 2
+        left: 0
+        height: 1
+        width: 2
+      refreshInterval: 1
+    system:
+      enabled: false
+      position:
+        top: 0
+        left: 1
+        height: 1
+        width: 1
+      refreshInterval: 3600
+    textfile:
+      enabled: false 
+      filePath: "~/.wtf/config.yml"
+      position:
+        top: 1
+        left: 1
+        height: 1
+        width: 1
+      refreshInterval: 30
+    weather:
+      # From http://openweathermap.org/help/city_list.txt
+      cityids:
+      - 6324733
+      colors:
+        current: "lightblue"
+      enabled: true
+      language: "EN"
+      position:
+        top: 1 
+        left: 0
+        height: 1
+        width: 1
+      refreshInterval: 900
+      tempUnit: "C"
+    git:
+      commitCount: 5
+      enabled: true
+      position:
+        top: 0
+        left: 1
+        height: 2
+        width: 2
+      refreshInterval: 8
+      repositories:
+        - "/Users/jackharrhy/Repos/bln-api-v2"

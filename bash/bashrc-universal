@@ -41,17 +41,17 @@ fi
 alias vimrc='vim ~/.vimrc'
 alias bashrc='vim ~/.bashrc'
 
-alias xdefaults='vim ~/.Xdefaults'
-alias autostart='vim ~/.config/herbstluftwm'
+#alias xdefaults='vim ~/.Xdefaults'
+#alias autostart='vim ~/.config/herbstluftwm'
 
-# cmatrix Binds
+# cool cmatrix
 alias matrix='cmatrix -C red -b -l -u 10'
 
-# tmux
+# tmux with color support
 alias tmux='TERM=screen-256color tmux'
 
 # editor
 EDITOR=vim
 
-# web server
-alias web='python -m SimpleHTTPServer'
+# web server, using serve (npm install serve -g)
+alias web='serve'

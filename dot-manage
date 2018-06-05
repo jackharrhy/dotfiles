@@ -13,6 +13,10 @@ function ubuntu() {
 	cat ./zsh/zshrc-ubuntu ./zsh/zshrc-base > ~/.zshrc
 }
 
+function macos() {
+	cat ./bash/bashrc-macos ./bash/bashrc-universal > ~/.bash_profile
+}
+
 function gui() {
 	sourceCodeProFiles=$(fc-list | grep -i "Source Code Pro")
 	if [ -z sourceCodeProFiles ]; then
@@ -46,6 +50,8 @@ function inform() {
 	echo ""
 	echo "  5 - pop-os"
 	echo ""
+	echo "  6 - macos"
+	echo ""
 }
 
 if [ $1 ]; then
@@ -77,6 +83,11 @@ if [ $1 ]; then
 		5)
 			popos
                         gui
+			universal
+			;;
+
+		6)
+			macos
 			universal
 			;;
 
