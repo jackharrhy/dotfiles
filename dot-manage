@@ -39,6 +39,14 @@ function universal() {
 	cp ./term/vimrc ~/.vimrc
 }
 
+function wtf() {
+	cp ./wtf/wtf-config.yml ~/.wtf/config.yml
+}
+
+function ohmyzsh() {
+	cp ./oh-my-zsh/zshrc ~/.zshrc
+}
+
 function inform() {
 	echo ""
 	echo " Choices:"
@@ -51,6 +59,8 @@ function inform() {
 	echo "  5 - pop-os"
 	echo ""
 	echo "  6 - macos"
+	echo ""
+	echo "  7 - wtf, tmux, vim"
 	echo ""
 }
 
@@ -90,6 +100,15 @@ if [ $1 ]; then
 			macos
 			universal
 			;;
+
+		7)
+			wtf
+			universal
+			;;
+                8)
+                        ohmyzsh
+                        universal
+                        ;;
 
 		*)
 			inform

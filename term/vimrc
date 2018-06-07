@@ -6,7 +6,14 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 	Plugin 'gmarik/Vundle.vim' 
 
-	" NERDTree
+        " Git
+        Plugin 'tpope/vim-fugitive'
+
+        " Status Bar
+        Plugin 'vim-airline/vim-airline'
+        Plugin 'vim-airline/vim-airline-themes'
+
+	" File Management
 	Plugin 'scrooloose/nerdtree'
 
 	" Color Schemes
@@ -64,5 +71,8 @@ nmap <silent> <c-l> :wincmd l<CR>
 " Python3 syntax checker
 let g:syntastic_python_python_exec = '/usr/bin/python3'
 
+" Vim-Airline Theme
+let g:airline_theme='bubblegum'
+
 " Automatic NERDTree Startup
-autocmd vimenter * NERDTree
+"autocmd vimenter * NERDTree
