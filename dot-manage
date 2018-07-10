@@ -1,115 +1,138 @@
 #!/bin/bash
 
+COLOR='\033[0;36m'
+NC='\033[0m'
+
+# ARCH LINUX
 function arch() {
-	cp ./doit ~/doit
-	cat ./zsh/zshrc-arch ./zsh/zshrc-base > ~/.zshrc
-}
-
-function popos() {
-	cat ./zsh/zshrc-popos ./zsh/zshrc-base > ~/.zshrc
-}
-
-function ubuntu() {
-	cat ./zsh/zshrc-ubuntu ./zsh/zshrc-base > ~/.zshrc
-}
-
-function macos() {
-	cat ./bash/bashrc-macos ./bash/bashrc-universal > ~/.bash_profile
-}
-
-function gui() {
-	sourceCodeProFiles=$(fc-list | grep -i "Source Code Pro")
-	if [ -z sourceCodeProFiles ]; then
-		echo "The font \"Source Code Pro\" is not currently installed"
-		cat ./gui/xdefaults-base ./gui/xdefaults-defaultfont > ~/.Xdefaults
-	else
-		cat ./gui/xdefaults-base ./gui/xdefaults-sourcecodepro > ~/.Xdefaults
-	fi
-}
-
-function i3multimon() {
-	cat ./gui/i3config-base ./gui/i3config-multimon > ~/.config/i3/config
+	printf "copying doit.sh -> ~/doit\n"
+	cp ./scripts/doit.sh ~/doit
+	printf "creating combined .zshrc for arch -> ~/.zshrc\n"
+	cat ./zsh/zshrc-arch.sh ./zsh/zshrc-universal.sh ./nvm/nvm.sh > ~/.zshrc
 }
 function i3() {
-	cp ./gui/i3config-base ~/.config/i3/config
+	printf "copying i3config-base.sh -> ~/.config/i3/config\n"
+	cp ./wm/i3config-base.sh ~/.config/i3/config
+}
+function i3multimon() {
+	printf "creating combined config for i3 -> ~/.config/i3/config\n"
+	cat ./wm/i3config-base.sh ./wm/i3config-multimon.sh > ~/.config/i3/config
 }
 
-function universal() {
-	cp ./term/tmux ~/.tmux.conf
+# POP-OS
+function popos() {
+	printf "creating combined .zshrc for popos -> ~/.zshrc\n"
+	cat ./zsh/zshrc-popos.sh ./zsh/zshrc-universal.sh ./nvm/nvm.sh > ~/.zshrc
+}
+
+# UBUNTU
+function ubuntu() {
+	printf "creating combined .zshrc for ubuntu -> ~/.zshrc\n"
+	cat ./zsh/zshrc-ubuntu.sh ./zsh/zshrc-base.sh ./nvm/nvm.sh > ~/.zshrc
+}
+
+# MACOS
+function macos() {
+	printf "creating combined .zshrc for ubuntu -> ~/.zshrc\n"
+	cat ./zsh/zshrc-macos.sh ./zsh/zshrc-universal.sh ./nvm/nvm.sh > ~/.zshrc
+}
+
+# UNIVERSAL
+function fonts() {
+	printf "setting terminal font\n"
+	sourceCodeProFiles=$(fc-list | grep -i "Source Code Pro")
+	if [ -z sourceCodeProFiles ]; then
+		printf "The font \"Source Code Pro\" is not currently installed\n"
+		cat ./wm/xdefaults-base ./wm/xdefaults-defaultfont > ~/.Xdefaults
+	else
+		cat ./wm/xdefaults-base ./wm/xdefaults-sourcecodepro > ~/.Xdefaults
+	fi
+}
+function tmux() {
+	printf "copying tmux -> ~/.tmux.conf\n"
+	cp ./term/tmux.conf ~/.tmux.conf
+}
+function vim() {
+	printf "copying vimrc -> ~/.vimrc\n"
 	cp ./term/vimrc ~/.vimrc
 }
 
-function wtf() {
-	cp ./wtf/wtf-config.yml ~/.wtf/config.yml
+# INSTALLS
+function vundle() {
+	printf "installing vundle"
+	git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 }
-
 function ohmyzsh() {
-	cp ./oh-my-zsh/zshrc ~/.zshrc
+	printf "installing ohmyzsh"
+	sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+}
+function nvminstall() {
+	printf "installing ohmyzsh"
+	curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
 }
 
 function inform() {
-	echo ""
-	echo " Choices:"
-	echo "  1 - arch"
-	echo "  2 - arch-multimon"
-	echo ""
-	echo "  3 - ubuntu"
-	echo "  4 - ubuntu-nogui"
-	echo ""
-	echo "  5 - pop-os"
-	echo ""
-	echo "  6 - macos"
-	echo ""
-	echo "  7 - wtf, tmux, vim"
-	echo ""
+	printf "${COLOR}\n"
+	printf " choices:\n"
+	printf "    configs:\n"
+	printf "  1 - arch\n"
+	printf "    + fonts, i3, tmux, vim\n"
+	printf "  2 - arch-multimon\n"
+	printf "    + fonts, i3multimon, tmux, vim\n"
+	printf "\n"
+	printf "  3 - ubuntu-nogui\n"
+	printf "    + tmux, vim\n"
+	printf "\n"
+	printf "  4 - pop-os\n"
+	printf "    + fonts, tmux, vim\n"
+	printf "\n"
+	printf "  5 - macos\n"
+	printf "    + fonts, tmux, vim\n"
+	printf "\n"
+	printf "    installs:\n"
+	printf "  6 - vundle\n"
+	printf "  7 - oh-my-zsh\n"
+	printf "  8 - nvm\n"
+	printf "${NC}\n"
 }
 
 if [ $1 ]; then
 	case $1 in
-		1)
+		1) # arch
 			arch
-			gui
+			fonts
 			i3
-			universal
-			;;
-		2)
+			tmux
+			vim;;
+		2) # arch-multimon
 			arch
-			gui
+			fonts
 			i3multimon
-			universal
-			;;
-
-		3)
+			tmux
+			vim;;
+		3) # ubuntu-nogui
 			ubuntu
-			gui
-			i3
-			universal
-			;;
-		4)
-			ubuntu
-			universal
-			;;
-
-		5)
+			tmux
+			vim;;
+		4) # pop-os
 			popos
-                        gui
-			universal
-			;;
-
-		6)
+			fonts
+			tmux
+			vim;;
+		5) # macos
 			macos
-			universal
+			fonts
+			tmux
+			vim;;
+		6) # vundle
+			vundle
 			;;
-
-		7)
-			wtf
-			universal
+		7) # oh-my-zsh
+			ohmyzsh
 			;;
-                8)
-                        ohmyzsh
-                        universal
-                        ;;
-
+		8) # nvminstall
+			nvminstall
+			;;
 		*)
 			inform
 	esac
