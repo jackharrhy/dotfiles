@@ -31,7 +31,7 @@ function popos() {
 # UBUNTU
 function ubuntu() {
   printf "creating combined .zshrc for ubuntu -> ~/.zshrc\n"
-  cat ./zsh/zshrc-ubuntu.sh ./zsh/zshrc-base.sh ./nvm/nvm.sh > ~/.zshrc
+  cat ./zsh/zshrc-ubuntu.sh ./zsh/zshrc-universal.sh ./nvm/nvm.sh > ~/.zshrc
 }
 
 # MACOS
