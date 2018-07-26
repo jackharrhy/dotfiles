@@ -4,39 +4,42 @@ filetype off
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-	Plugin 'gmarik/Vundle.vim' 
+Plugin 'gmarik/Vundle.vim' 
 
-        " Git
-        Plugin 'tpope/vim-fugitive'
+"  Editor Config
+Plugin 'editorconfig/editorconfig-vim'
 
-        " Status Bar
-        Plugin 'vim-airline/vim-airline'
-        Plugin 'vim-airline/vim-airline-themes'
+" Git
+Plugin 'tpope/vim-fugitive'
 
-	" File Management
-	Plugin 'scrooloose/nerdtree'
+" Status Bar
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 
-	" Color Schemes
-	Plugin 'flazz/vim-colorschemes'
+" File Management
+Plugin 'scrooloose/nerdtree'
 
-	" Autocompletion
-	Plugin 'ajh17/VimCompletesMe'
+" Color Schemes
+Plugin 'flazz/vim-colorschemes'
 
-	" Markdown
-        Plugin 'godlygeek/tabular'
-	Plugin 'tpope/vim-markdown'
+" Autocompletion
+Plugin 'ajh17/VimCompletesMe'
 
-	" HTML
-	Plugin 'digitaltoad/vim-pug'
+" Markdown
+Plugin 'godlygeek/tabular'
+Plugin 'tpope/vim-markdown'
 
-	" CSS
-	Plugin 'groenewege/vim-less'
-	Plugin 'ap/vim-css-color'
+" HTML
+Plugin 'digitaltoad/vim-pug'
 
-	" Javascript/JSON
-	Plugin 'elzr/vim-json'
-	Plugin 'pangloss/vim-javascript'
-	Plugin 'mxw/vim-jsx'
+" CSS
+Plugin 'groenewege/vim-less'
+Plugin 'ap/vim-css-color'
+
+" Javascript/JSON
+Plugin 'elzr/vim-json'
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
 call vundle#end()
 filetype plugin indent on
 
