@@ -77,10 +77,12 @@ function vundle() {
 function ohmyzsh() {
   printf "installing ohmyzsh\n"
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+  printf "installing pure-prompt (requires npm, might need sudo)"
+  npm install --global pure-prompt
 }
 function nvminstall() {
   printf "installing ohmyzsh\n"
-  curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+  curl -o- "https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh" | bash
 }
 
 function inform() {
@@ -100,7 +102,7 @@ function inform() {
   printf "    ${ADDITIONS}+ fonts, tmux, vim, git\n${NC}${REGULAR}"
   printf "\n"
   printf "  5 - macos\n"
-  printf "    ${ADDITIONS}+ fonts, tmux, vim, git\n${NC}${REGULAR}"
+  printf "    ${ADDITIONS}+ tmux, vim, git\n${NC}${REGULAR}"
   printf "\n"
   printf "    ${HEADERUNDER}installs:\n${NC}${REGULAR}"
   printf "  6 - vundle\n"
@@ -131,7 +133,6 @@ if [ $1 ]; then
       common;;
     5) # macos
       macos
-      fonts
       common;;
     6) # vundle
       vundle;;

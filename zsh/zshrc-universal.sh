@@ -2,10 +2,7 @@
 
 EDITOR=vim
 
-# OH-MY-ZSH
-
 export ZSH=~/.oh-my-zsh
-ZSH_THEME="wezm"
 
 plugins=(
   git,
@@ -23,3 +20,6 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
+
+autoload -U promptinit; promptinit
+prompt pure
