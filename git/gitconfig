@@ -3,7 +3,7 @@
   email = me@jackharrhy.com
 
 [sequence]
-  editor = macos-git-interactive-rebase-tool
+  editor = interactive-rebase-tool
 
 [alias]
   git = !git
