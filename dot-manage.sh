@@ -74,14 +74,8 @@ function vundle() {
   printf "installing vundle\n"
   git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 }
-function ohmyzsh() {
-  printf "installing ohmyzsh\n"
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-  printf "installing pure-prompt (requires npm, might need sudo)"
-  npm install --global pure-prompt
-}
 function nvminstall() {
-  printf "installing ohmyzsh\n"
+  printf "installing nvm\n"
   curl -o- "https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh" | bash
 }
 
@@ -106,9 +100,8 @@ function inform() {
   printf "\n"
   printf "    ${HEADERUNDER}installs:\n${NC}${REGULAR}"
   printf "  6 - vundle\n"
-  printf "  7 - oh-my-zsh\n"
-  printf "  8 - nvm\n"
-  printf "  9 - all\n"
+  printf "  7 - nvm\n"
+  printf "  8 - all\n"
   printf "${NC}\n"
 }
 
@@ -136,14 +129,11 @@ if [ $1 ]; then
       common;;
     6) # vundle
       vundle;;
-    7) # oh-my-zsh
-      ohmyzsh;;
-    8) # nvminstall
+    7) # nvminstall
       nvminstall;;
-    9) # all
+    8) # all
       vundle
-      nvminstall
-      ohmyzsh;;
+      nvminstall;;
     *)
       inform;;
   esac

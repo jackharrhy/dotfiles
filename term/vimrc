@@ -6,18 +6,16 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
-"  Editor Config
-Plugin 'editorconfig/editorconfig-vim'
+" Distraction-free modes
+Plugin 'junegunn/goyo.vim'
+Plugin 'junegunn/limelight.vim'
 
-" Git
-Plugin 'tpope/vim-fugitive'
+" Editor Config
+Plugin 'editorconfig/editorconfig-vim'
 
 " Status Bar
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-
-" File Management
-Plugin 'scrooloose/nerdtree'
 
 " Color Schemes
 Plugin 'flazz/vim-colorschemes'
@@ -28,9 +26,6 @@ Plugin 'ajh17/VimCompletesMe'
 " Markdown
 Plugin 'godlygeek/tabular'
 Plugin 'tpope/vim-markdown'
-
-" HTML
-Plugin 'digitaltoad/vim-pug'
 
 " CSS
 Plugin 'groenewege/vim-less'
@@ -58,9 +53,6 @@ set number
 syntax on
 colorscheme devbox-dark-256
 
-" Visual bell
-:set visualbell
-
 " Use ctrl-[hjkl] to select the active split
 nmap <silent> <c-k> :wincmd k<CR>
 nmap <silent> <c-j> :wincmd j<CR>
@@ -71,11 +63,9 @@ nmap <silent> <c-l> :wincmd l<CR>
 :set textwidth=0
 :set wrapmargin=0
 
-" Python3 syntax checker
-let g:syntastic_python_python_exec = '/usr/bin/python3'
-
 " Vim-Airline Theme
 let g:airline_theme='bubblegum'
 
-" Automatic NERDTree Startup
-"autocmd vimenter * NERDTree
+" Limelight
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave Limelight!
