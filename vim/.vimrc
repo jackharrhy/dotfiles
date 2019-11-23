@@ -16,8 +16,9 @@ Plugin 'editorconfig/editorconfig-vim'
 " Color Schemes
 Plugin 'flazz/vim-colorschemes'
 
-" Nix
+" Lang support
 Plugin 'LnL7/vim-nix'
+Plugin 'dag/vim-fish'
 
 call vundle#end()
 filetype plugin indent on

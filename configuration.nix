@@ -6,28 +6,34 @@
       ./hardware-configuration.nix
     ];
 
-  # booting
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader = {
+    systemd-boot.enable = true;
+    efi.canTouchEfiVariables = true;
+  }
 
-  # networking
-  networking.hostName = "thinktop";
-  networking.wireless.enable = true;
+  networking = {
+    hostName = "thinktop";
+    wireless.enable = true;
 
-  networking.interfaces.enp0s25.useDHCP = true;
-  networking.interfaces.wlp3s0.useDHCP = true;
+    interfaces = {
+      enp0s25.useDHCP = true;
+      wlp3s0.useDHCP = true;
+    }
 
-  # internationalisation
+    firewall = {
+      allowedTCPPorts = [ 22 ];
+      allowedUDPPorts = [ ];
+    }
+  }
+
   i18n = {
     consoleFont = "Lat2-Terminus16";
     consoleKeyMap = "us";
     defaultLocale = "en_US.UTF-8";
   };
 
-  # time
   time.timeZone = "America/St_Johns";
 
-  # List packages installed in system profile
   environment.systemPackages = with pkgs; [
 
     # cli
@@ -68,29 +74,28 @@
     allowUnfree = true;
   };
 
-  # ssh
-  services.openssh.enable = true;
+  virtualizsation.docker.enable = true;
 
-  # firewall
-  networking.firewall.allowedTCPPorts = [ 22 ];
-  networking.firewall.allowedUDPPorts = [ ];
-
-  # printing
-  # services.printing.enable = true;
+  services = {
+    openssh.enable = true;
+    # printing.enable = true;
+  }
 
   # sound
   sound.enable = true;
   hardware.pulseaudio.enable = true;
 
   # x11
-  services.xserver.enable = true;
-  services.xserver.layout = "us";
+  services.xserver = {
+    enable = true;
+    layout = "us";
 
-  # touchpad
-  services.xserver.libinput.enable = true;
+    # touchpad
+    libinput.enable = true;
 
-  # wm
-  services.xserver.windowManager.herbstluftwm.enable = true;
+    # wm
+    windowManager.herbstluftwm.enable = true;
+  }
 
   # user
   users.users.jack = {
@@ -102,6 +107,5 @@
 
   # NixOS release
   system.stateVersion = "19.09";
-
 }
 
