@@ -9,7 +9,7 @@
   boot.loader = {
     systemd-boot.enable = true;
     efi.canTouchEfiVariables = true;
-  }
+  };
 
   networking = {
     hostName = "thinktop";
@@ -18,13 +18,13 @@
     interfaces = {
       enp0s25.useDHCP = true;
       wlp3s0.useDHCP = true;
-    }
+    };
 
     firewall = {
       allowedTCPPorts = [ 22 ];
       allowedUDPPorts = [ ];
-    }
-  }
+    };
+  };
 
   i18n = {
     consoleFont = "Lat2-Terminus16";
@@ -74,12 +74,12 @@
     allowUnfree = true;
   };
 
-  virtualizsation.docker.enable = true;
+  virtualisation.docker.enable = true;
 
   services = {
     openssh.enable = true;
     # printing.enable = true;
-  }
+  };
 
   # sound
   sound.enable = true;
@@ -95,7 +95,7 @@
 
     # wm
     windowManager.herbstluftwm.enable = true;
-  }
+  };
 
   # user
   users.users.jack = {
