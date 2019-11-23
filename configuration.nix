@@ -34,7 +34,21 @@
 
   time.timeZone = "America/St_Johns";
 
+  programs.fish.enable = true;
+
   environment.systemPackages = with pkgs; [
+
+    # lang
+    crystal
+    shards
+
+    rustc
+    cargo
+    rustup
+
+    python3
+
+    nodejs-10_x
 
     # cli
     wget
@@ -48,7 +62,6 @@
     git
     tmux
     _1password
-    fish
 
     # tooling
     dmenu
@@ -101,7 +114,7 @@
   users.users.jack = {
     isNormalUser = true;
     home = "/home/jack";
-    shell = pkgs.fish;
+    shell = "/run/current-system/sw/bin/fish";
     extraGroups = [ "wheel" "networkmanager" "docker" ];
   };
 
