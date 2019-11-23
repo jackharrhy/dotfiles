@@ -16,4 +16,3 @@ s herbs
 s term
 s tmux
 s vim
-s test

@@ -42,7 +42,7 @@
     git
     tmux
     _1password
-    fish-shell
+    fish
 
     # tooling
     dmenu
@@ -96,6 +96,7 @@
   users.users.jack = {
     isNormalUser = true;
     home = "/home/jack";
+    shell = pkgs.fish;
     extraGroups = [ "wheel" "networkmanager" "docker" ];
   };
 
