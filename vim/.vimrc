@@ -13,35 +13,17 @@ Plugin 'junegunn/limelight.vim'
 " Editor Config
 Plugin 'editorconfig/editorconfig-vim'
 
-" Status Bar
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-
 " Color Schemes
 Plugin 'flazz/vim-colorschemes'
 
-" Autocompletion
-Plugin 'ajh17/VimCompletesMe'
+" Lang support
+Plugin 'LnL7/vim-nix'
+Plugin 'dag/vim-fish'
 
-" Markdown
-Plugin 'godlygeek/tabular'
-Plugin 'tpope/vim-markdown'
-
-" CSS
-Plugin 'groenewege/vim-less'
-Plugin 'ap/vim-css-color'
-
-" Javascript/JSON
-Plugin 'elzr/vim-json'
-Plugin 'pangloss/vim-javascript'
-Plugin 'mxw/vim-jsx'
 call vundle#end()
 filetype plugin indent on
 
-" JSX on .js
-let g:jsx_ext_required = 0
-
-" Indenting
+" Smol Indenting
 set softtabstop=2
 set shiftwidth=2
 set expandtab
@@ -58,10 +40,6 @@ nmap <silent> <c-k> :wincmd k<CR>
 nmap <silent> <c-j> :wincmd j<CR>
 nmap <silent> <c-h> :wincmd h<CR>
 nmap <silent> <c-l> :wincmd l<CR>
-
-" Better wrapping on :set nowrap
-:set textwidth=0
-:set wrapmargin=0
 
 " Vim-Airline Theme
 let g:airline_theme='bubblegum'
