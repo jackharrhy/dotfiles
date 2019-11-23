@@ -2,9 +2,6 @@
   name = Jack Arthur Harrhy
   email = me@jackharrhy.com
 
-[sequence]
-  editor = interactive-rebase-tool
-
 [alias]
   git = !git
 
