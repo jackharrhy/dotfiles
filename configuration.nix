@@ -63,6 +63,9 @@
     tmux
     _1password
 
+    # dev
+    docker-compose
+
     # tooling
     dmenu
 

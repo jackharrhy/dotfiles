@@ -1,3 +1,5 @@
+set EDITOR vim
+
 function op-getpass
   op get item $argv[1] | jq '.details.fields[] | select(.designation=="password").value'
 end

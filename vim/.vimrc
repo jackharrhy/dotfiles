@@ -19,6 +19,7 @@ Plugin 'flazz/vim-colorschemes'
 " Lang support
 Plugin 'LnL7/vim-nix'
 Plugin 'dag/vim-fish'
+Plugin 'rhysd/vim-crystal'
 
 call vundle#end()
 filetype plugin indent on
