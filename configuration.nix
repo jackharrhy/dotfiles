@@ -65,9 +65,14 @@
 
     # dev
     docker-compose
+    lazydocker
+    minikube
+    sqlite
+    pgcli
 
     # tooling
     dmenu
+    xorg.xkill
 
     # audio
     spotifyd
