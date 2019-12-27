@@ -30,7 +30,7 @@ set shiftwidth=2
 set expandtab
 
 " Line Numbering
-set number
+set relativenumber
 
 " Syntax
 syntax on

@@ -48,6 +48,8 @@
 
     python3
 
+    gcc9
+
     nodejs-10_x
 
     # cli
@@ -64,18 +66,24 @@
     _1password
 
     # dev
+    shellcheck
     docker-compose
     lazydocker
     minikube
     sqlite
     pgcli
+    wine
+    hyperfine
+    imagemagick
 
     # tooling
     dmenu
     xorg.xkill
+    flameshot
 
-    # audio
+    # media
     spotifyd
+    mpv
 
     # apps
     firefox-devedition-bin
