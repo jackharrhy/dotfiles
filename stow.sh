@@ -11,8 +11,10 @@ s() {
   esac
 }
 
+s fish
 s git
 s herbs
 s term
 s tmux
 s vim
+s xinit

@@ -30,5 +30,4 @@ URxvt.shading:     20
 *color14: #56ffff
 *color7: #dbdbdb
 *color15: #ffffff
-URxvt.font:     xft:bitstream vera sans mono:size=10:antialias=true
-URxvt.boldFont: xft:bitstream vera sans mono:bold:size=10:antialias=true
+URxvt*font: xft:Source Code Pro Medium:size=11
