@@ -17,3 +17,6 @@
   interactive = auto
   ui = true
   pager = true
+
+[core]
+  pager = diff-so-fancy | less --tabs=4 -RFX
