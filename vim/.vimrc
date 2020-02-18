@@ -20,6 +20,7 @@ Plugin 'flazz/vim-colorschemes'
 Plugin 'LnL7/vim-nix'
 Plugin 'dag/vim-fish'
 Plugin 'rhysd/vim-crystal'
+Plugin 'plasticboy/vim-markdown'
 
 call vundle#end()
 filetype plugin indent on
@@ -48,3 +49,6 @@ let g:airline_theme='bubblegum'
 " Limelight
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
+
+" Disable folding
+let g:vim_markdown_folding_disabled = 1

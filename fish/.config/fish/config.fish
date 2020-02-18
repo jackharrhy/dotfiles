@@ -32,9 +32,19 @@ function ultra
   xrandr --output eDP-1 --primary --mode 1920x1080 --pos 260x1080 --rotate normal --output DP-1 --off --output HDMI-1 --mode 2560x1080_60.00 --pos 0x0 --rotate normal --output DP-2 --off --output HDMI-2 --off
   herbstclient detect_monitors
   herbstclient reload
+  sudo netctl stop-all
   sudo netctl start blackhole
 end
 
 function mun
+  sudo netctl stop-all
   sudo netctl start mun-guest
+end
+
+function mybar
+  while true
+    acpi
+    date
+    sleep 5
+  end
 end
