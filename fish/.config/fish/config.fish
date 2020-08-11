@@ -1,5 +1,7 @@
 set EDITOR vim
 
+thefuck --alias | source
+
 status --is-interactive; and pyenv init - | source
 status --is-interactive; and pyenv virtualenv-init - | source
 
@@ -55,4 +57,20 @@ function mybar
     date
     sleep 5
   end
+end
+
+function clc
+  set BRANCH (git rev-parse --abbrev-ref HEAD)
+  set LAST_COMMIT_SHA (git rev-parse $BRANCH | tail -n 1)
+  echo "$LAST_COMMIT_SHA" | tr -d '\n' | pbcopy
+  echo "Copied $LAST_COMMIT_SHA from branch $BRANCH to clipboard via pbcopy."
+end
+
+function prc
+  set BRANCH (git rev-parse --abbrev-ref HEAD)
+  set COMMENT $argv[1]
+
+  git commit -m $COMMENT
+  git push origin
+  clc
 end
