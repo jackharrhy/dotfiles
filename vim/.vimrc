@@ -21,6 +21,7 @@ Plugin 'LnL7/vim-nix'
 Plugin 'dag/vim-fish'
 Plugin 'rhysd/vim-crystal'
 Plugin 'plasticboy/vim-markdown'
+Plugin 'elixir-editors/vim-elixir'
 
 call vundle#end()
 filetype plugin indent on
@@ -31,7 +32,7 @@ set shiftwidth=2
 set expandtab
 
 " Line Numbering
-set relativenumber
+" set relativenumber
 
 " Syntax
 syntax on

@@ -1,9 +1,14 @@
 set EDITOR vim
+set -gx PATH "$HOME/.cargo/bin" $PATH
 
 thefuck --alias | source
 
-status --is-interactive; and pyenv init - | source
-status --is-interactive; and pyenv virtualenv-init - | source
+function gradient
+  source ~/.pyenv/versions/gradient/bin/activate.fish
+end
+
+#set -Ux PYENV_ROOT $HOME/.pyenv
+#set -Ux fish_user_paths $PYENV_ROOT/bin $fish_user_paths
 
 if not functions -q fisher
     set -q XDG_CONFIG_HOME; or set XDG_CONFIG_HOME ~/.config
