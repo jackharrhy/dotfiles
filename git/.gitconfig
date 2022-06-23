@@ -20,3 +20,9 @@
 
 [core]
   pager = diff-so-fancy | less --tabs=4 -RFX
+  editor = vim
+
+[sequence]
+  editor = vim # interactive-rebase-tool
+[init]
+  defaultBranch = main

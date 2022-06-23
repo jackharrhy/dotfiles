@@ -10,10 +10,12 @@ end
 #set -Ux PYENV_ROOT $HOME/.pyenv
 #set -Ux fish_user_paths $PYENV_ROOT/bin $fish_user_paths
 
+source ~/.asdf/asdf.fish
+
 if not functions -q fisher
-    set -q XDG_CONFIG_HOME; or set XDG_CONFIG_HOME ~/.config
-    curl https://git.io/fisher --create-dirs -sLo $XDG_CONFIG_HOME/fish/functions/fisher.fish
-    fish -c fisher
+  set -q XDG_CONFIG_HOME; or set XDG_CONFIG_HOME ~/.config
+  curl https://git.io/fisher --create-dirs -sLo $XDG_CONFIG_HOME/fish/functions/fisher.fish
+  fish -c fisher
 end
 
 function op-getpass
@@ -61,7 +63,7 @@ function mybar
     acpi
     date
     sleep 5
-  end
+end
 end
 
 function clc
@@ -78,4 +80,41 @@ function prc
   git commit -m $COMMENT
   git push origin
   clc
+end
+
+set -gx WASMTIME_HOME "$HOME/.wasmtime"
+
+string match -r ".wasmtime" "$PATH" > /dev/null; or set -gx PATH "$WASMTIME_HOME/bin" $PATH
+
+set -U DENO_INSTALL /home/jack/.deno
+
+fish_add_path \
+  /usr/local/go/bin \
+  /home/jack/software/zig \
+  /home/jack/.pulumi/bin \
+  "$DENO_INSTALL/bin" \
+  "/home/jack/.bin"
+
+# Generated for envman. Do not edit.
+test -s "$HOME/.config/envman/load.fish"; and source "$HOME/.config/envman/load.fish"
+
+eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+
+function chris_say
+  notify-send -i "/home/jack/Pictures/chris.svg" "$argv"
+end
+
+function chris_gag
+  chris_say "hello jack"
+  read
+  chris_say "it is me .. chris hardy"
+  read
+  chris_say "i love bombardier recreational products"
+end
+
+function posix-source
+  for i in (cat $argv)
+    set arr (echo $i |tr = \n)
+    set -gx $arr[1] $arr[2]
+  end
 end
