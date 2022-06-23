@@ -1,29 +1,30 @@
-" Vundle
-set nocompatible
-filetype off
+" vim-plug
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'gmarik/Vundle.vim'
+call plug#begin()
 
 " Distraction-free modes
-Plugin 'junegunn/goyo.vim'
-Plugin 'junegunn/limelight.vim'
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
 
 " Editor Config
-Plugin 'editorconfig/editorconfig-vim'
+Plug 'editorconfig/editorconfig-vim'
 
 " Color Schemes
-Plugin 'flazz/vim-colorschemes'
+Plug 'flazz/vim-colorschemes'
 
 " Lang support
-Plugin 'LnL7/vim-nix'
-Plugin 'dag/vim-fish'
-Plugin 'rhysd/vim-crystal'
-Plugin 'plasticboy/vim-markdown'
-Plugin 'elixir-editors/vim-elixir'
+Plug 'dag/vim-fish'
+Plug 'rhysd/vim-crystal'
+Plug 'plasticboy/vim-markdown'
+Plug 'elixir-editors/vim-elixir'
 
-call vundle#end()
+call plug#end()
+
 filetype plugin indent on
 
 " Smol Indenting
@@ -32,7 +33,7 @@ set shiftwidth=2
 set expandtab
 
 " Line Numbering
-" set relativenumber
+set relativenumber
 
 " Syntax
 syntax on
