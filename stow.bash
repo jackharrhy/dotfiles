@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 s() {
   read -p "stow $1? : " -n 1 -r
