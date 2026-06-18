@@ -3,6 +3,6 @@
 </p>
 
 ```
-sh -c "$(curl -fsLS https://get.chezmoi.io)"
+brew install chezmoi
 chezmoi init --apply jackharrhy
 ```

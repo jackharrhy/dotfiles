@@ -1,3 +1,4 @@
+brew "chezmoi"
 brew "fish"
 brew "gh"
 brew "mise"
