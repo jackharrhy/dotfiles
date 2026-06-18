@@ -1,0 +1,9 @@
+elixir      latest
+erlang      latest
+node        latest
+pnpm        latest
+bun         latest
+go          latest
+odin        latest
+rust        stable
+uv          latest

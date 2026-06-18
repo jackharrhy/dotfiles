@@ -1,0 +1,8 @@
+brew "fish"
+brew "gh"
+brew "mise"
+brew "direnv"
+brew "neovim"
+brew "fzf"
+brew "starship"
+brew "jq"

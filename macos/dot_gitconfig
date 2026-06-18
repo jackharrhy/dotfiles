@@ -1,0 +1,29 @@
+[user]
+  name = Jack Arthur Harrhy
+  email = me@jackharrhy.com
+
+[alias]
+  git = !git
+
+  fixup = commit --amend -C HEAD
+  undo = reset --soft HEAD^
+
+[color]
+  diff = auto
+  status = auto
+  branch = auto
+  interactive = auto
+  ui = true
+  pager = true
+
+[core]
+  pager = delta
+
+[interactive]
+  diffFilter = delta --color-only
+
+[delta]
+  navigate = true
+
+[init]
+  defaultBranch = main
