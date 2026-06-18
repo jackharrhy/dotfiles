@@ -3,5 +3,6 @@
 </p>
 
 ```
-sh -c "$(curl -fsLS https://get.chezmoi.io)" -- init --apply jackharrhy
+sh -c "$(curl -fsLS https://get.chezmoi.io)"
+chezmoi init --apply jackharrhy
 ```
