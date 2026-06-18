@@ -34,6 +34,8 @@ alias ls eza
 alias ll "eza -la"
 alias lt "eza --tree"
 
+test -f ~/.orbstack/shell/init2.fish; and source ~/.orbstack/shell/init2.fish
+
 function fish_greeting
   date
 end
