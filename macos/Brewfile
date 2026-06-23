@@ -14,3 +14,8 @@ brew "zizmor"
 brew "gnupg"
 brew "hadolint"
 brew "just"
+
+cask "macos-fuse-t/homebrew-cask/fuse-t"
+cask "macos-fuse-t/homebrew-cask/fuse-t-sshfs"
+
+cask "gcloud-cli"
