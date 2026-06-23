@@ -6,6 +6,7 @@ else if test -x /usr/local/bin/brew
     eval (/usr/local/bin/brew shellenv)
 end
 
+fish_add_path ~/.local/bin
 fish_add_path ~/.opencode/bin
 
 if type -q mise
