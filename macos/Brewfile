@@ -14,6 +14,7 @@ brew "zizmor"
 brew "gnupg"
 brew "hadolint"
 brew "just"
+brew "age"
 
 cask "macos-fuse-t/homebrew-cask/fuse-t"
 cask "macos-fuse-t/homebrew-cask/fuse-t-sshfs"
