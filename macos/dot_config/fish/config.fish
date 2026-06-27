@@ -9,6 +9,8 @@ end
 fish_add_path ~/.local/bin
 fish_add_path ~/.opencode/bin
 
+# fish_add_path ~/Library/Android/sdk/platform-tools
+
 if type -q mise
     mise activate fish | source
 end

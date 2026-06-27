@@ -1,3 +1,13 @@
 [tools]
 node = "lts"
 "npm:wrangler" = "latest"
+
+elixir = "latest"
+erlang = "latest"
+pnpm = "latest"
+bun = "latest"
+go = "latest"
+odin = "latest"
+rust = "stable"
+uv = "latest"
+deno = "latest"

@@ -1,20 +1,25 @@
 brew "chezmoi"
-brew "fish"
-brew "gh"
 brew "mise"
-brew "direnv"
+
+brew "fish"
 brew "neovim"
+
+brew "gh"
+brew "direnv"
 brew "fzf"
 brew "starship"
 brew "jq"
 brew "glow"
 brew "duf"
 brew "lazydocker"
-brew "zizmor"
-brew "gnupg"
-brew "hadolint"
 brew "just"
+brew "zizmor"
+brew "hadolint"
+
+brew "gnupg"
 brew "age"
+
+brew "ffmpeg"
 
 cask "macos-fuse-t/homebrew-cask/fuse-t"
 cask "macos-fuse-t/homebrew-cask/fuse-t-sshfs"
