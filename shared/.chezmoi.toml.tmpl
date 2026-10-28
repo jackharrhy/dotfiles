@@ -1,0 +1,6 @@
+{{- $machine := promptChoiceOnce . "machine" "Machine profile" (list "drill" "blue" "newport" "mug") -}}
+umask = 0o077
+sourceDir = {{ .chezmoi.workingTree | quote }}
+
+[data]
+machine = {{ $machine | quote }}

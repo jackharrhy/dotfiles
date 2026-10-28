@@ -1,27 +1,11 @@
-brew "chezmoi"
-brew "mise"
-
-brew "fish"
-brew "neovim"
-
-brew "gh"
-brew "direnv"
-brew "fzf"
-brew "starship"
-brew "jq"
-brew "glow"
-brew "duf"
-brew "lazydocker"
-brew "just"
-brew "zizmor"
-brew "hadolint"
-
-brew "gnupg"
-brew "age"
-
-brew "ffmpeg"
-
-cask "macos-fuse-t/homebrew-cask/fuse-t"
-cask "macos-fuse-t/homebrew-cask/fuse-t-sshfs"
-
-cask "gcloud-cli"
+brew "chezmoi", args: ["force-bottle"]
+brew "mise", args: ["force-bottle"]
+brew "fish", args: ["force-bottle"]
+brew "age", args: ["force-bottle"]
+brew "gnupg", args: ["force-bottle"]
+brew "eza", args: ["force-bottle"]
+brew "tokei", args: ["force-bottle"]
+brew "ffmpeg", args: ["force-bottle"]
+brew "lima", args: ["force-bottle"]
+brew "docker", args: ["force-bottle"]
+brew "docker-compose", args: ["force-bottle"]
