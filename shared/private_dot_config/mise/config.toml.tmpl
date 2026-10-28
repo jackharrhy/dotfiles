@@ -1,0 +1,71 @@
+[settings]
+auto_install = false
+exec_auto_install = false
+not_found_auto_install = false
+pin = false
+
+[settings.task]
+run_auto_install = false
+{{ if ne .machine "mug" }}
+
+[settings.erlang]
+compile = false
+{{ if eq .machine "newport" }}
+precompiled_os = "ubuntu-26.04"
+{{ end }}
+{{ end }}
+
+[tools]
+node = "lts"
+pnpm = "latest"
+bun = "latest"
+go = "latest"
+uv = "latest"
+# Aqua's HTTP entry requires an explicit version; update after review.
+"aqua:1password/cli" = "2.41.1"
+# cf currently publishes its latest npm tag as a beta.
+"npm:cf" = { version = "latest", prerelease = true }
+
+"aqua:BurntSushi/ripgrep" = "latest"
+"aqua:sharkdp/fd" = "latest"
+"aqua:sharkdp/bat" = "latest"
+"aqua:ajeetdsouza/zoxide" = "latest"
+"aqua:dandavison/delta" = "latest"
+"aqua:bootandy/dust" = "latest"
+"aqua:sharkdp/hyperfine" = "latest"
+"aqua:chmln/sd" = "latest"
+"aqua:ast-grep/ast-grep" = "latest"
+"aqua:jqlang/jq" = "latest"
+"aqua:casey/just" = "latest"
+"aqua:charmbracelet/glow" = "latest"
+"aqua:muesli/duf" = "latest"
+"aqua:hadolint/hadolint" = "latest"
+"aqua:koalaman/shellcheck" = "latest"
+"aqua:neovim/neovim" = "latest"
+"aqua:direnv/direnv" = "latest"
+"aqua:starship/starship" = "latest"
+"aqua:jesseduffield/lazydocker" = "latest"
+"aqua:git-lfs/git-lfs" = "latest"
+"aqua:cli/cli" = "latest"
+{{ if eq .chezmoi.os "darwin" }}
+"github:dalance/procs" = { version = "latest", asset_pattern = "procs-*-aarch64-mac.zip" }
+"github:jdx/jactionlint" = { version = "latest", asset_pattern = "jactionlint_*_darwin_arm64.tar.gz" }
+"npm:wrangler" = "latest"
+{{ else }}
+"aqua:eza-community/eza" = "latest"
+"github:dalance/procs" = { version = "latest", asset_pattern = "procs-*-x86_64-linux.zip" }
+"github:jdx/jactionlint" = { version = "latest", asset_pattern = "jactionlint_*_linux_amd64.tar.gz" }
+{{ end }}
+{{ if ne .machine "mug" }}
+"core:erlang" = "latest"
+"core:elixir" = "latest"
+{{ if eq .chezmoi.os "darwin" }}
+"github:odin-lang/Odin" = { version = "latest", asset_pattern = "odin-macos-arm64-*.tar.gz" }
+{{ else }}
+"github:odin-lang/Odin" = { version = "latest", asset_pattern = "odin-linux-amd64-*.tar.gz" }
+{{ end }}
+{{ end }}
+{{ if eq .machine "newport" }}
+java = "26.0.1"
+"npm:vercel" = "latest"
+{{ end }}

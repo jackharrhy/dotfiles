@@ -1,3 +1,7 @@
 bin
 *.swp
 .DS_Store
+**/local.fish
+**/local.gitconfig
+__pycache__/
+/tmp/

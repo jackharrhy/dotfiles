@@ -1,0 +1,60 @@
+[tasks."skills:install"]
+description = "Restore ~/skills-lock.json into ~/.agents/skills"
+run = "mise install npm:skills@latest; and mise exec npm:skills@latest -- fish --no-config scripts/install-skills.fish"
+
+[tasks."tools:install"]
+description = "Install missing tools from the applied global mise config"
+run = "fish --no-config scripts/tools.fish install"
+
+[tasks."tools:update"]
+description = "Update tools in the applied global mise config"
+run = "fish --no-config scripts/tools.fish update"
+
+[tasks."packages:install"]
+description = "Install missing native packages (no Docker daemon changes on Linux)"
+env = { HOMEBREW_NO_AUTO_UPDATE = "1", HOMEBREW_NO_INSTALL_CLEANUP = "1", HOMEBREW_NO_INSTALLED_DEPENDENTS_CHECK = "1" }
+run = '''
+switch (uname -s)
+    case Darwin
+        exec brew bundle install --file macos/Brewfile --no-upgrade
+    case Linux
+        exec fish --no-config scripts/packages-apt.fish install
+    case '*'
+        echo 'Unsupported platform.' >&2
+        exit 1
+end
+'''
+
+[tasks."packages:update"]
+description = "Update declared native packages only"
+env = { HOMEBREW_NO_AUTO_UPDATE = "1", HOMEBREW_NO_INSTALL_CLEANUP = "1", HOMEBREW_NO_INSTALLED_DEPENDENTS_CHECK = "1" }
+run = '''
+switch (uname -s)
+    case Darwin
+        brew update; or exit $status
+        exec brew bundle upgrade --file macos/Brewfile
+    case Linux
+        exec fish --no-config scripts/packages-apt.fish update
+    case '*'
+        echo 'Unsupported platform.' >&2
+        exit 1
+end
+'''
+
+[tasks."rust:install"]
+description = "Ensure rustup stable, rustfmt and Clippy (not Mug)"
+run = "fish --no-config scripts/rust.fish install"
+
+[tasks."rust:update"]
+description = "Update rustup's stable toolchain (not Mug)"
+run = "fish --no-config scripts/rust.fish update"
+
+[tasks."fish:install"]
+description = "Install missing Fisher plugins from the applied Fish manifest"
+run = "fish scripts/fish-plugins.fish install"
+
+[tasks."fish:update"]
+description = "Update declared Fisher plugins explicitly"
+run = "fish scripts/fish-plugins.fish update"
+[task_config]
+shell = "fish --no-config -c"

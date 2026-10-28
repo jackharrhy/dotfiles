@@ -1,0 +1,32 @@
+{{- $color := index (dict "drill" "#A7ADB5" "blue" "#4C78B8" "newport" "#E7774D" "mug" "#B58B62") .machine -}}
+format = "$username$hostname$directory$git_branch$git_status$cmd_duration$line_break$character"
+add_newline = true
+
+[username]
+show_always = true
+style_user = "bold {{ $color }}"
+style_root = "bold red"
+format = "[$user@]($style)"
+
+[hostname]
+ssh_only = false
+style = "bold {{ $color }}"
+format = "[$hostname]($style) "
+
+[directory]
+style = "{{ $color }}"
+format = "[$path]($style)[$read_only]($read_only_style) "
+truncation_length = 3
+truncate_to_repo = false
+
+[git_branch]
+symbol = ""
+format = "[on $branch]($style) "
+style = "bold {{ $color }}"
+
+[git_status]
+style = "{{ $color }}"
+
+[character]
+success_symbol = "[❯](bold {{ $color }})"
+error_symbol = "[❯](bold red)"

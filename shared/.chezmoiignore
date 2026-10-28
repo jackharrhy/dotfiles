@@ -1,0 +1,16 @@
+.gitconfig
+.config/fish/local.fish
+.config/git/local.gitconfig
+.ssh/config
+
+# Skill payloads and harness state are installed separately, never by chezmoi.
+.agents/skills
+.claude
+
+{{ if ne .chezmoi.os "darwin" }}
+.docker
+{{ end }}
+
+{{ if ne .machine "drill" }}
+.config/git/gndctl.gitconfig
+{{ end }}
