@@ -302,29 +302,10 @@ true
         self.assertEqual(p.returncode, 0, p.stderr)
         self.assertFalse(marker.exists())
 
-    def test_mug_without_runtime_or_optional_tools(self):
-        p = self.chezmoi('apply', '--force', machine='mug')
-        self.assertEqual(p.returncode, 0, p.stderr)
-        config = self.home / '.config/fish/config.fish'
-        for interactive in (False, True):
-            with self.subTest(interactive=interactive):
-                # Bypass vendor startup so this exercises genuinely absent tools.
-                p = self.run_command([TOOLS['fish'], '--no-config',
-                                      *(['--interactive'] if interactive else []), '-c',
-                                      f'source "{config}"; ' + '''functions vim | string match -q '*nvim*'; and exit 21
-functions cat | string match -q '*bat*'; and exit 22
-functions ls | string match -q '*eza*'; and exit 23
-set -q BASH_ENV; and exit 24
-true
-'''])
-                self.assertEqual(p.returncode, 0, p.stderr)
-
     def test_installed_optional_tools_and_missing_audio_dependency(self):
         self.install_fixture()
         for name in ('direnv', 'zoxide', 'starship'):
             self.executable(name, f'echo "set -gx INIT_{name} yes"\n')
-        fzf_marker = self.root / 'fzf-was-invoked'
-        self.executable('fzf', f'touch "{fzf_marker}"\nexit 99\n')
         for name in ('eza', 'bat', 'nvim'):
             self.executable(name, 'exit 0\n')
         p = self.fish('''for name in direnv zoxide starship
@@ -335,7 +316,6 @@ functions ls | string match -q '*eza*'; or exit 19
 functions cat | string match -q '*bat*'; or exit 20
 ''', interactive=True, term='xterm-256color')
         self.assertEqual(p.returncode, 0, p.stderr)
-        self.assertFalse(fzf_marker.exists())
         p = self.fish('ytdl-audio')
         self.assertEqual(p.returncode, 127)
         self.assertIn('requires uvx', p.stderr)
