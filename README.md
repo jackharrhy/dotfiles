@@ -3,7 +3,7 @@
 </p>
 
 ```fish
-# Install chezmoi and Fish first. Profiles: drill, blue, newport, mug.
+# Install chezmoi and Fish first. Profiles: berg, blue, newport, mug.
 chezmoi init jackharrhy
 chezmoi diff
 chezmoi apply

@@ -143,7 +143,7 @@ esac
         config = self.home / '.docker/config.json'
         config.parent.mkdir()
         config.write_text('{"currentContext":"fixture"}\n')
-        for machine, os_name in [('drill', 'darwin'), ('blue', 'darwin'),
+        for machine, os_name in [('berg', 'darwin'), ('blue', 'darwin'),
                                  ('newport', 'linux'), ('mug', 'linux')]:
             p = self.chezmoi('apply', '--force', machine=machine, os_name=os_name)
             self.assertEqual(p.returncode, 0, p.stderr)
@@ -208,12 +208,12 @@ test "$PKG_CONFIG_PATH[2]" = /existing/pkgconfig; or exit 9
         self.install_fixture()
         self.assertEqual(config.read_text(), original)
         fragment = folder / 'config.d/fleet.conf'
-        for name in ['drill', 'blue', 'newport', 'mug']:
+        for name in ['blue', 'newport', 'mug']:
             p = self.run_command([ssh, '-G', '-F', str(fragment), name])
             self.assertEqual(p.returncode, 0, p.stderr)
             values = dict(line.split(' ', 1) for line in p.stdout.splitlines())
             self.assertEqual(values['hostname'], f'{name}.hedgehog-python.ts.net')
-            self.assertEqual(values['user'], 'jackharrhy' if name == 'drill' else 'jack')
+            self.assertEqual(values['user'], 'jack')
         self.assertEqual(folder.stat().st_mode & 0o777, 0o700)
 
     def test_profiles_disable_auto_installs_and_preserve_skill_payloads(self):
@@ -223,7 +223,7 @@ test "$PKG_CONFIG_PATH[2]" = /existing/pkgconfig; or exit 9
         bundled = self.home / '.codex/skills/.system/keep'
         bundled.parent.mkdir(parents=True)
         bundled.write_text('bundled\n')
-        for machine, os_name in [('drill', 'darwin'), ('blue', 'darwin'), ('newport', 'linux'), ('mug', 'linux')]:
+        for machine, os_name in [('berg', 'darwin'), ('blue', 'darwin'), ('newport', 'linux'), ('mug', 'linux')]:
             with self.subTest(machine=machine):
                 p = self.chezmoi('apply', '--force', machine=machine, os_name=os_name)
                 self.assertEqual(p.returncode, 0, p.stderr)
@@ -388,41 +388,6 @@ functions cat | string match -q '*bat*'; or exit 20
             self.assertEqual(p.stdout.splitlines(), ['', '!gh auth git-credential'])
         for key in ['credential.helper', 'core.hooksPath', 'gpg.program']:
             p = self.run_command([TOOLS['git'], 'config', '--includes', '--get', key])
-            self.assertEqual(p.returncode, 1, p.stderr)
-
-    def test_work_hooks_are_scoped_to_drill_work_repositories(self):
-        p = self.chezmoi('apply', '--force', machine='drill', os_name='darwin')
-        self.assertEqual(p.returncode, 0, p.stderr)
-        work_config = self.home / '.config/git/gndctl.gitconfig'
-        self.assertTrue(work_config.exists())
-        (self.home / '.gitconfig').write_text(
-            '[includeIf "gitdir:~/repos/gndctl/"]\n'
-            '    path = ~/.config/git/gndctl.gitconfig\n')
-        work = self.home / 'repos/gndctl/project'
-        personal = self.home / 'repos/personal/project'
-        for repo in [work, personal]:
-            repo.mkdir(parents=True)
-            p = self.run_command([TOOLS['git'], 'init', '--quiet', str(repo)])
-            self.assertEqual(p.returncode, 0, p.stderr)
-        p = self.run_command([TOOLS['git'], '-C', str(work), '-c', 'user.name=Fixture',
-                              '-c', 'user.email=fixture@example.invalid', 'commit',
-                              '--allow-empty', '--quiet', '-m', 'fixture'])
-        self.assertEqual(p.returncode, 0, p.stderr)
-        worktree = self.home / 'repos/gndctl/linked-worktree'
-        p = self.run_command([TOOLS['git'], '-C', str(work), 'worktree', 'add',
-                              '--detach', '--quiet', str(worktree), 'HEAD'])
-        self.assertEqual(p.returncode, 0, p.stderr)
-        for repo, expected in [(work, True), (worktree, True), (personal, False), (self.home, False)]:
-            p = self.run_command([TOOLS['git'], '-C', str(repo), 'config', '--get', 'core.hooksPath'])
-            self.assertEqual(p.returncode, 0 if expected else 1, p.stderr)
-            if expected:
-                self.assertEqual(p.stdout.strip(), '~/repos/gndctl/git-hooks/hooks')
-        work_config.unlink()
-        for machine, os_name in [('blue', 'darwin'), ('newport', 'linux'), ('mug', 'linux')]:
-            p = self.chezmoi('apply', '--force', machine=machine, os_name=os_name)
-            self.assertEqual(p.returncode, 0, p.stderr)
-            self.assertFalse(work_config.exists())
-            p = self.run_command([TOOLS['git'], '-C', str(work), 'config', '--get', 'core.hooksPath'])
             self.assertEqual(p.returncode, 1, p.stderr)
 
     def test_private_permissions_unmanaged_files_and_idempotence(self):

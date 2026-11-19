@@ -10,7 +10,3 @@
 {{ if ne .chezmoi.os "darwin" }}
 .docker
 {{ end }}
-
-{{ if ne .machine "drill" }}
-.config/git/gndctl.gitconfig
-{{ end }}
